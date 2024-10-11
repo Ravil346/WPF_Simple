@@ -1,0 +1,499 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище RieltorDipModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Apartament">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_City" Type="int" Nullable="false" />
+    <Property Name="Id_Metro" Type="int" />
+    <Property Name="Id_District" Type="int" />
+    <Property Name="Street" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="House" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Flat" Type="int" />
+    <Property Name="Area" Type="int" Nullable="false" />
+    <Property Name="Rooms" Type="int" Nullable="false" />
+    <Property Name="Floor" Type="int" />
+    <Property Name="Id_Type" Type="int" Nullable="false" />
+    <Property Name="Price" Type="int" Nullable="false" />
+    <Property Name="Repair" Type="bit" Nullable="false" />
+    <Property Name="Id_Type_Of_Rooms" Type="int" Nullable="false" />
+    <Property Name="High_Of_Roof" Type="float" Nullable="false" />
+    <Property Name="Id_Type_Of_Toilet" Type="int" Nullable="false" />
+    <Property Name="Floor_In_House" Type="int" Nullable="false" />
+    <Property Name="Lift" Type="bit" Nullable="false" />
+    <Property Name="Id_Type_Of_Parking" Type="int" Nullable="false" />
+    <Property Name="Id_Client" Type="int" Nullable="false" />
+    <Property Name="Id_Rieltor" Type="int" Nullable="false" />
+    <Property Name="Id_Type_Of_Operation" Type="int" Nullable="false" />
+    <Property Name="Sold" Type="bit" Nullable="false" />
+    <Property Name="Image" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SecondName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Demand" Type="int" Nullable="false" />
+    <Property Name="Id_Apartament" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_City" Type="int" Nullable="false" />
+    <Property Name="MinPrise" Type="int" />
+    <Property Name="MaxPrise" Type="int" />
+    <Property Name="Id_Rieltor" Type="int" />
+    <Property Name="Id_Client" Type="int" Nullable="false" />
+    <Property Name="Id_Type_Of_Operation" Type="int" Nullable="false" />
+    <Property Name="MinArea" Type="int" />
+    <Property Name="MaxArea" Type="int" />
+    <Property Name="MinRooms" Type="int" />
+    <Property Name="MaxRooms" Type="int" />
+    <Property Name="MinFloor" Type="int" />
+    <Property Name="MaxFloor" Type="int" />
+    <Property Name="Id_Type_Of_House" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_City" Type="int" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_Apartament" Type="int" Nullable="false" />
+    <Property Name="Image" Type="image" />
+  </EntityType>
+  <EntityType Name="Metro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Id_City" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type_Of_House">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type_Of_Operation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Type_Of_Parking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type_Of_Rooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Type_Of_Toilet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Surname" Type="varchar" MaxLength="50" />
+    <Property Name="Name" Type="varchar" MaxLength="50" />
+    <Property Name="Secondname" Type="varchar" MaxLength="50" />
+    <Property Name="Login" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Passport" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Count_Of_Sale" Type="int" />
+    <Property Name="Sallary" Type="int" />
+    <Property Name="Image" Type="varbinary" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Apartament_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Districts">
+    <End Role="Districts" Type="Self.Districts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Districts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_District" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Metro">
+    <End Role="Metro" Type="Self.Metro" Multiplicity="0..1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metro">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Metro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_House">
+    <End Role="Type_Of_House" Type="Self.Type_Of_House" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Operation">
+    <End Role="Type_Of_Operation" Type="Self.Type_Of_Operation" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Operation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Operation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Parking">
+    <End Role="Type_Of_Parking" Type="Self.Type_Of_Parking" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Parking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Parking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Rooms">
+    <End Role="Type_Of_Rooms" Type="Self.Type_Of_Rooms" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Rooms" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Toilet">
+    <End Role="Type_Of_Toilet" Type="Self.Type_Of_Toilet" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Toilet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Toilet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Rieltor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Apartament">
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="1" />
+    <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartament">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="Id_Apartament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="1" />
+    <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="Id_Demand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_City">
+    <End Role="City" Type="Self.City" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Type_Of_House">
+    <End Role="Type_Of_House" Type="Self.Type_Of_House" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Type_Of_House" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Type_Of_Operation">
+    <End Role="Type_Of_Operation" Type="Self.Type_Of_Operation" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Operation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Type_Of_Operation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Rieltor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Districts_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Districts">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Apartament">
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartament">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="Id_Apartament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Metro_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Metro" Type="Self.Metro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Metro">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Хранилище RieltorDipModelContainer">
+    <EntitySet Name="Apartament" EntityType="Self.Apartament" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Deal" EntityType="Self.Deal" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Demands" EntityType="Self.Demands" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Districts" EntityType="Self.Districts" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Image" EntityType="Self.Image" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Metro" EntityType="Self.Metro" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Of_House" EntityType="Self.Type_Of_House" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Of_Operation" EntityType="Self.Type_Of_Operation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Of_Parking" EntityType="Self.Type_Of_Parking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Of_Rooms" EntityType="Self.Type_Of_Rooms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type_Of_Toilet" EntityType="Self.Type_Of_Toilet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Apartament_City" Association="Self.FK_Apartament_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Client" Association="Self.FK_Apartament_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Districts" Association="Self.FK_Apartament_Districts">
+      <End Role="Districts" EntitySet="Districts" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Metro" Association="Self.FK_Apartament_Metro">
+      <End Role="Metro" EntitySet="Metro" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_House" Association="Self.FK_Apartament_Type_Of_House">
+      <End Role="Type_Of_House" EntitySet="Type_Of_House" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Operation" Association="Self.FK_Apartament_Type_Of_Operation">
+      <End Role="Type_Of_Operation" EntitySet="Type_Of_Operation" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Parking" Association="Self.FK_Apartament_Type_Of_Parking">
+      <End Role="Type_Of_Parking" EntitySet="Type_Of_Parking" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Rooms" Association="Self.FK_Apartament_Type_Of_Rooms">
+      <End Role="Type_Of_Rooms" EntitySet="Type_Of_Rooms" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Toilet" Association="Self.FK_Apartament_Type_Of_Toilet">
+      <End Role="Type_Of_Toilet" EntitySet="Type_Of_Toilet" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Worker" Association="Self.FK_Apartament_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Apartament" Association="Self.FK_Deal_Apartament">
+      <End Role="Apartament" EntitySet="Apartament" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Demands" Association="Self.FK_Deal_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_City" Association="Self.FK_Demands_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Client" Association="Self.FK_Demands_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Type_Of_House" Association="Self.FK_Demands_Type_Of_House">
+      <End Role="Type_Of_House" EntitySet="Type_Of_House" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Type_Of_Operation" Association="Self.FK_Demands_Type_Of_Operation">
+      <End Role="Type_Of_Operation" EntitySet="Type_Of_Operation" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Worker" Association="Self.FK_Demands_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Districts_City" Association="Self.FK_Districts_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Districts" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Apartament" Association="Self.FK_Image_Apartament">
+      <End Role="Apartament" EntitySet="Apartament" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Metro_City" Association="Self.FK_Metro_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Metro" EntitySet="Metro" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

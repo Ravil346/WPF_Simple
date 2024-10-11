@@ -1,0 +1,143 @@
+﻿<Window x:Class="RieltorAgency.InfoDemandWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RieltorAgency"
+        mc:Ignorable="d"
+         FontSize="14"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen"
+        Title="Запрос" Height="600" Width="450">
+    <Border CornerRadius="30" Background="#eff2f7">
+        <ScrollViewer>
+            <Grid Margin="30 20 20 20">
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+
+                </Grid.RowDefinitions>
+                
+
+                <TextBlock Text="Запрос" FontSize="20" FontWeight="SemiBold"
+                           Grid.Row="0"/>
+
+                <ScrollViewer x:Name="DemandScroll" Grid.Row="2">
+
+                    
+                        <Grid HorizontalAlignment="Center">
+                            <Grid.RowDefinitions>
+
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*" x:Name="R1"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+
+                        </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <!--Город-->
+                            <TextBlock Text="Город" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="CmbCity" Grid.Column="1" Grid.Row="0"
+                             Height="30"  Background="#fff" DisplayMemberPath="Name"/>
+
+                            <!--Цена-->
+                            <TextBlock Text="Цена" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="30 0 10 0"
+                                     x:Name="TxtMinPrice"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="45 0 0 0"
+                                     x:Name="TxtMaxPrice"/>
+                            </StackPanel>
+
+                            <!--Площадь-->
+                            <TextBlock Text="Площадь" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" />
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="0" VerticalAlignment="Center">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="30 0 0 0"
+                                     x:Name="TxtMinArea"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="4" Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="45 0 0 0"
+                                     x:Name="TxtMaxArea"/>
+                            </StackPanel>
+
+                            <!--Комнаты-->
+                            <TextBlock Text="Количество комнат" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" x:Name="Rooms" Margin="0 10"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="0" VerticalAlignment="Center"  Margin="0 12" x:Name="MinRooms">
+                                <TextBlock Text="от" VerticalAlignment="Center" />
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="30 0 0 0"
+                                     x:Name="TxtMinRooms"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Grid.Row="6" Grid.Column="1" VerticalAlignment="Center" x:Name="MaxRooms"  Margin="0 12">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="45 0 0 0"
+                                     x:Name="TxtMaxRooms"/>
+                            </StackPanel>
+
+                            <!--Тип апартов-->
+                            <TextBlock Text="Тип апартаментов" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="CmbTypeOFApart" Grid.Column="1" Grid.Row="7" SelectionChanged="CmbTypeOFApart_SelectionChanged"
+                             Height="30"  Background="#fff" DisplayMemberPath="Name"/>
+
+                            <!--Этаж-->
+                        <TextBlock Text="Этаж" Grid.Column="0" Grid.Row="8" VerticalAlignment="Center" x:Name="Floor"  Margin="0 10"/>
+                        <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="0" VerticalAlignment="Center" x:Name="MinFloor"  Margin="0 12">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="30 0 0 0"
+                                     x:Name="TxtMinFloor"/>
+                            </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="9" Grid.Column="1" VerticalAlignment="Center" x:Name="MaxFloor"  Margin="0 12">
+                                <TextBlock Text="от" VerticalAlignment="Center"/>
+                                <TextBox Width="120" Background="#fff" HorizontalAlignment="Right" Margin="45 0 0 0"
+                                     x:Name="TxtMaxFloor"/>
+                            </StackPanel>
+
+
+
+                            <!--Тип Операции-->
+                            <TextBlock Text="Тип Операции" Grid.Column="0" Grid.Row="10" VerticalAlignment="Center"/>
+                            <ComboBox x:Name="CmbTypeOfOperation" Grid.Column="1" Grid.Row="10" 
+                             Height="30"  Background="#fff" DisplayMemberPath="Name"/>
+
+                        <Button Content="Обновить" Style="{StaticResource addButton}" 
+                                    Grid.Row="11" Grid.Column="0" HorizontalAlignment="Center" Margin="0 0 "
+                                    x:Name="UpdateDemand" Click="UpdateDemand_Click" Width="170"/>
+
+                        <Button Content="Удалить" Style="{StaticResource addButton}" 
+                                    Grid.Row="11" Grid.Column="1" HorizontalAlignment="Center" Margin="0 0 "
+                                    x:Name="DeleteDemand" Click="DeleteDemand_Click" Width="170" />
+
+                    </Grid>
+                        
+
+                    
+
+                </ScrollViewer>
+
+            </Grid>
+        </ScrollViewer>
+       
+    </Border>
+    
+</Window>

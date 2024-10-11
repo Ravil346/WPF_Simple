@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bd61e8a26aa14de8aea8f046950c9f53" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="RieltorDipModel.Apartament" Width="1.5" PointX="8.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.City" Width="1.5" PointX="1" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Client" Width="1.5" PointX="0.75" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Deal" Width="1.5" PointX="6.25" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Demands" Width="1.5" PointX="3.375" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Districts" Width="1.5" PointX="5.125" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Image" Width="1.5" PointX="5.375" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Metro" Width="1.5" PointX="3" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Type_Of_House" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Type_Of_Operation" Width="1.5" PointX="0.75" PointY="19.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Type_Of_Parking" Width="1.5" PointX="0.75" PointY="22.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Type_Of_Rooms" Width="1.5" PointX="3.125" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Type_Of_Toilet" Width="1.5" PointX="6.375" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RieltorDipModel.Worker" Width="1.5" PointX="5.375" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_City" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Type_Of_House" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Type_Of_Operation" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Type_Of_Parking" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Type_Of_Rooms" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Type_Of_Toilet" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Deal_Apartament" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Image_Apartament" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Districts_City" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Metro_City" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Demands_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Deal_Demands" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Demands_Type_Of_House" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Demands_Type_Of_Operation" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Demands_Worker" ManuallyRouted="false" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Districts" />
+        <AssociationConnector Association="RieltorDipModel.FK_Apartament_Metro" />
+        <AssociationConnector Association="RieltorDipModel.FK_Demands_City" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

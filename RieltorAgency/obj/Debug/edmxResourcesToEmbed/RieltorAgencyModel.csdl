@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="RieltorDipModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Apartament">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_City" Type="Int32" Nullable="false" />
+    <Property Name="Street" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="House" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Flat" Type="Int32" />
+    <Property Name="Area" Type="Int32" Nullable="false" />
+    <Property Name="Rooms" Type="Int32" Nullable="false" />
+    <Property Name="Floor" Type="Int32" />
+    <Property Name="Id_Type" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Int32" Nullable="false" />
+    <Property Name="Repair" Type="Boolean" Nullable="false" />
+    <Property Name="Id_Type_Of_Rooms" Type="Int32" Nullable="false" />
+    <Property Name="High_Of_Roof" Type="Double" Nullable="false" />
+    <Property Name="Id_Type_Of_Toilet" Type="Int32" Nullable="false" />
+    <Property Name="Floor_In_House" Type="Int32" Nullable="false" />
+    <Property Name="Lift" Type="Boolean" Nullable="false" />
+    <Property Name="Id_Type_Of_Parking" Type="Int32" Nullable="false" />
+    <Property Name="Id_Client" Type="Int32" Nullable="false" />
+    <Property Name="Id_Rieltor" Type="Int32" Nullable="false" />
+    <Property Name="Id_Type_Of_Operation" Type="Int32" Nullable="false" />
+    <Property Name="Sold" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Apartament_City" FromRole="Apartament" ToRole="City" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Apartament_Client" FromRole="Apartament" ToRole="Client" />
+    <NavigationProperty Name="Type_Of_House" Relationship="Self.FK_Apartament_Type_Of_House" FromRole="Apartament" ToRole="Type_Of_House" />
+    <NavigationProperty Name="Type_Of_Operation" Relationship="Self.FK_Apartament_Type_Of_Operation" FromRole="Apartament" ToRole="Type_Of_Operation" />
+    <NavigationProperty Name="Type_Of_Parking" Relationship="Self.FK_Apartament_Type_Of_Parking" FromRole="Apartament" ToRole="Type_Of_Parking" />
+    <NavigationProperty Name="Type_Of_Rooms" Relationship="Self.FK_Apartament_Type_Of_Rooms" FromRole="Apartament" ToRole="Type_Of_Rooms" />
+    <NavigationProperty Name="Type_Of_Toilet" Relationship="Self.FK_Apartament_Type_Of_Toilet" FromRole="Apartament" ToRole="Type_Of_Toilet" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Apartament_Worker" FromRole="Apartament" ToRole="Worker" />
+    <NavigationProperty Name="Deal" Relationship="Self.FK_Deal_Apartament" FromRole="Apartament" ToRole="Deal" />
+    <NavigationProperty Name="Image" Relationship="Self.FK_Image_Apartament" FromRole="Apartament" ToRole="Image" />
+    <Property Name="Id_Metro" Type="Int32" />
+    <Property Name="Id_District" Type="Int32" />
+    <NavigationProperty Name="Districts" Relationship="RieltorDipModel.FK_Apartament_Districts" FromRole="Apartament" ToRole="Districts" />
+    <NavigationProperty Name="Metro" Relationship="RieltorDipModel.FK_Apartament_Metro" FromRole="Apartament" ToRole="Metro" />
+    <Property Name="Image1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_City" FromRole="City" ToRole="Apartament" />
+    <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_City" FromRole="City" ToRole="Districts" />
+    <NavigationProperty Name="Metro" Relationship="Self.FK_Metro_City" FromRole="City" ToRole="Metro" />
+    <NavigationProperty Name="Demands" Relationship="RieltorDipModel.FK_Demands_City" FromRole="City" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Client" FromRole="Client" ToRole="Apartament" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Client" FromRole="Client" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Deal">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Demand" Type="Int32" Nullable="false" />
+    <Property Name="Id_Apartament" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Deal_Apartament" FromRole="Deal" ToRole="Apartament" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Deal_Demands" FromRole="Deal" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Demands">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_City" Type="Int32" Nullable="false" />
+    <Property Name="MinPrise" Type="Int32" />
+    <Property Name="MaxPrise" Type="Int32" />
+    <Property Name="Id_Rieltor" Type="Int32" />
+    <Property Name="Id_Client" Type="Int32" Nullable="false" />
+    <Property Name="Id_Type_Of_Operation" Type="Int32" Nullable="false" />
+    <Property Name="MinArea" Type="Int32" />
+    <Property Name="MaxArea" Type="Int32" />
+    <Property Name="MinRooms" Type="Int32" />
+    <Property Name="MaxRooms" Type="Int32" />
+    <Property Name="MinFloor" Type="Int32" />
+    <Property Name="MaxFloor" Type="Int32" />
+    <Property Name="Id_Type_Of_House" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Demands_Client" FromRole="Demands" ToRole="Client" />
+    <NavigationProperty Name="Deal" Relationship="Self.FK_Deal_Demands" FromRole="Demands" ToRole="Deal" />
+    <NavigationProperty Name="Type_Of_House" Relationship="Self.FK_Demands_Type_Of_House" FromRole="Demands" ToRole="Type_Of_House" />
+    <NavigationProperty Name="Type_Of_Operation" Relationship="Self.FK_Demands_Type_Of_Operation" FromRole="Demands" ToRole="Type_Of_Operation" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Demands_Worker" FromRole="Demands" ToRole="Worker" />
+    <NavigationProperty Name="City" Relationship="RieltorDipModel.FK_Demands_City" FromRole="Demands" ToRole="City" />
+  </EntityType>
+  <EntityType Name="Districts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_City" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Districts_City" FromRole="Districts" ToRole="City" />
+    <NavigationProperty Name="Apartament" Relationship="RieltorDipModel.FK_Apartament_Districts" FromRole="Districts" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Image">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_Apartament" Type="Int32" Nullable="false" />
+    <Property Name="Image1" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Image_Apartament" FromRole="Image" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Metro">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_City" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Metro_City" FromRole="Metro" ToRole="City" />
+    <NavigationProperty Name="Apartament" Relationship="RieltorDipModel.FK_Apartament_Metro" FromRole="Metro" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Type_Of_House">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Type_Of_House" FromRole="Type_Of_House" ToRole="Apartament" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Type_Of_House" FromRole="Type_Of_House" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Type_Of_Operation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Type_Of_Operation" FromRole="Type_Of_Operation" ToRole="Apartament" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Type_Of_Operation" FromRole="Type_Of_Operation" ToRole="Demands" />
+  </EntityType>
+  <EntityType Name="Type_Of_Parking">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Type_Of_Parking" FromRole="Type_Of_Parking" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Type_Of_Rooms">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Type_Of_Rooms" FromRole="Type_Of_Rooms" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Type_Of_Toilet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Type_Of_Toilet" FromRole="Type_Of_Toilet" ToRole="Apartament" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Secondname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Passport" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Count_Of_Sale" Type="Int32" />
+    <Property Name="Sallary" Type="Int32" />
+    <Property Name="Image" Type="Binary" MaxLength="50" FixedLength="false" />
+    <NavigationProperty Name="Apartament" Relationship="Self.FK_Apartament_Worker" FromRole="Worker" ToRole="Apartament" />
+    <NavigationProperty Name="Demands" Relationship="Self.FK_Demands_Worker" FromRole="Worker" ToRole="Demands" />
+  </EntityType>
+  <Association Name="FK_Apartament_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_House">
+    <End Role="Type_Of_House" Type="Self.Type_Of_House" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Operation">
+    <End Role="Type_Of_Operation" Type="Self.Type_Of_Operation" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Operation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Operation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Parking">
+    <End Role="Type_Of_Parking" Type="Self.Type_Of_Parking" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Parking">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Parking" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Rooms">
+    <End Role="Type_Of_Rooms" Type="Self.Type_Of_Rooms" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Rooms">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Rooms" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Type_Of_Toilet">
+    <End Role="Type_Of_Toilet" Type="Self.Type_Of_Toilet" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Toilet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Type_Of_Toilet" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Rieltor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Apartament">
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="1" />
+    <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartament">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="Id_Apartament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Image_Apartament">
+    <End Role="Apartament" Type="Self.Apartament" Multiplicity="1" />
+    <End Role="Image" Type="Self.Image" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Apartament">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Image">
+        <PropertyRef Name="Id_Apartament" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Districts_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Districts" Type="Self.Districts" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Districts">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Metro_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Metro" Type="Self.Metro" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Metro">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Client" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Deal_Demands">
+    <End Role="Demands" Type="Self.Demands" Multiplicity="1" />
+    <End Role="Deal" Type="Self.Deal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Demands">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Deal">
+        <PropertyRef Name="Id_Demand" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Type_Of_House">
+    <End Role="Type_Of_House" Type="Self.Type_Of_House" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_House">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Type_Of_House" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Type_Of_Operation">
+    <End Role="Type_Of_Operation" Type="Self.Type_Of_Operation" Multiplicity="1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Type_Of_Operation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Type_Of_Operation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="0..1" />
+    <End Role="Demands" Type="Self.Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_Rieltor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="RieltorDipEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Apartament" EntityType="Self.Apartament" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Deal" EntityType="Self.Deal" />
+    <EntitySet Name="Demands" EntityType="Self.Demands" />
+    <EntitySet Name="Districts" EntityType="Self.Districts" />
+    <EntitySet Name="Image" EntityType="Self.Image" />
+    <EntitySet Name="Metro" EntityType="Self.Metro" />
+    <EntitySet Name="Type_Of_House" EntityType="Self.Type_Of_House" />
+    <EntitySet Name="Type_Of_Operation" EntityType="Self.Type_Of_Operation" />
+    <EntitySet Name="Type_Of_Parking" EntityType="Self.Type_Of_Parking" />
+    <EntitySet Name="Type_Of_Rooms" EntityType="Self.Type_Of_Rooms" />
+    <EntitySet Name="Type_Of_Toilet" EntityType="Self.Type_Of_Toilet" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Apartament_City" Association="Self.FK_Apartament_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Client" Association="Self.FK_Apartament_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_House" Association="Self.FK_Apartament_Type_Of_House">
+      <End Role="Type_Of_House" EntitySet="Type_Of_House" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Operation" Association="Self.FK_Apartament_Type_Of_Operation">
+      <End Role="Type_Of_Operation" EntitySet="Type_Of_Operation" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Parking" Association="Self.FK_Apartament_Type_Of_Parking">
+      <End Role="Type_Of_Parking" EntitySet="Type_Of_Parking" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Rooms" Association="Self.FK_Apartament_Type_Of_Rooms">
+      <End Role="Type_Of_Rooms" EntitySet="Type_Of_Rooms" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Type_Of_Toilet" Association="Self.FK_Apartament_Type_Of_Toilet">
+      <End Role="Type_Of_Toilet" EntitySet="Type_Of_Toilet" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Worker" Association="Self.FK_Apartament_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Apartament" Association="Self.FK_Deal_Apartament">
+      <End Role="Apartament" EntitySet="Apartament" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Image_Apartament" Association="Self.FK_Image_Apartament">
+      <End Role="Apartament" EntitySet="Apartament" />
+      <End Role="Image" EntitySet="Image" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Districts_City" Association="Self.FK_Districts_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Districts" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Metro_City" Association="Self.FK_Metro_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Metro" EntitySet="Metro" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Client" Association="Self.FK_Demands_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Deal_Demands" Association="Self.FK_Deal_Demands">
+      <End Role="Demands" EntitySet="Demands" />
+      <End Role="Deal" EntitySet="Deal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Type_Of_House" Association="Self.FK_Demands_Type_Of_House">
+      <End Role="Type_Of_House" EntitySet="Type_Of_House" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Type_Of_Operation" Association="Self.FK_Demands_Type_Of_Operation">
+      <End Role="Type_Of_Operation" EntitySet="Type_Of_Operation" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_Worker" Association="Self.FK_Demands_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Districts" Association="RieltorDipModel.FK_Apartament_Districts">
+      <End Role="Districts" EntitySet="Districts" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Apartament_Metro" Association="RieltorDipModel.FK_Apartament_Metro">
+      <End Role="Metro" EntitySet="Metro" />
+      <End Role="Apartament" EntitySet="Apartament" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Demands_City" Association="RieltorDipModel.FK_Demands_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Demands" EntitySet="Demands" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="FK_Apartament_Districts">
+    <End Type="RieltorDipModel.Districts" Role="Districts" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="RieltorDipModel.Apartament" Role="Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Districts">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_District" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Apartament_Metro">
+    <End Type="RieltorDipModel.Metro" Role="Metro" Multiplicity="0..1" />
+    <End Type="RieltorDipModel.Apartament" Role="Apartament" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Metro">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Apartament">
+        <PropertyRef Name="Id_Metro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Demands_City">
+    <End Type="RieltorDipModel.City" Role="City" Multiplicity="1" />
+    <End Type="RieltorDipModel.Demands" Role="Demands" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Demands">
+        <PropertyRef Name="Id_City" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

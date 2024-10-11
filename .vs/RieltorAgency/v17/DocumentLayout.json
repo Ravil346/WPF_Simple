@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\\u0420\u0430\u0432\u0438\u043B\u044C\\Desktop\\RieltorAgency\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{56669405-1D24-4B38-B93B-0934C31ED936}|RieltorAgency\\RieltorAgency.csproj|c:\\users\\\u0440\u0430\u0432\u0438\u043B\u044C\\desktop\\rieltoragency\\rieltoragency\\demandpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{56669405-1D24-4B38-B93B-0934C31ED936}|RieltorAgency\\RieltorAgency.csproj|solutionrelative:rieltoragency\\demandpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "DemandPage.xaml",
+              "DocumentMoniker": "C:\\Users\\\u0420\u0430\u0432\u0438\u043B\u044C\\Desktop\\RieltorAgency\\RieltorAgency\\DemandPage.xaml",
+              "RelativeDocumentMoniker": "RieltorAgency\\DemandPage.xaml",
+              "ToolTip": "C:\\Users\\\u0420\u0430\u0432\u0438\u043B\u044C\\Desktop\\RieltorAgency\\RieltorAgency\\DemandPage.xaml",
+              "RelativeToolTip": "RieltorAgency\\DemandPage.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-10-11T12:54:02.487Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,276 @@
+﻿<Page x:Class="RieltorAgency.SalePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:RieltorAgency" xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d" 
+      d:DesignHeight="720" d:DesignWidth="880"
+      Title="SalePage">
+    <Page.Resources>
+        <sys:String x:Key="NullImage">
+            pack://application:,,,/ImagesRes/9.jpg
+        </sys:String>
+    </Page.Resources>
+    <Border CornerRadius="30" Background="#eff2f7" >
+        <Grid Margin="30 20 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            
+            <!--Верхняя строка-->
+            <Border Height="50" Grid.Row="0"/>
+
+            <!--Название страницы-->
+            <TextBlock Text="Объекты на продажу" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                       HorizontalAlignment="Left" Foreground="#121518"/>
+            
+            <!--Кнопка добавления-->
+            <Button Style="{StaticResource addButton}" x:Name="BtnAddApart" Click="BtnAddApart_Click">
+                <StackPanel Orientation="Horizontal">
+                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                    <TextBlock Text="Добавить объект"/>
+                </StackPanel>
+            </Button>
+            
+            <!--Сепаратор-->
+            <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
+            
+            <!--Кнопки объектов-->
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Content="Квартиры" Style="{StaticResource tabButton}" x:Name="BtnFilterFlat" Click="BtnFilterFlat_Click"/>
+                <Button Content="Дома" Style="{StaticResource tabButton}" x:Name="BtnFilterHouse" Click="BtnFilterHouse_Click"/>
+                <Button Content="Земля" Style="{StaticResource tabButton}" x:Name="BtnFilterEarth" Click="BntFilterEarth_Click"/>
+                <Button Content="Неважно" Style="{StaticResource tabButton}" x:Name="BntFilterAll" Click="BntFilterAll_Click"/>
+            </StackPanel>
+            <Button Content="Проданы" Grid.Row="2" Style="{StaticResource tabButton}" 
+                    HorizontalAlignment="Right" x:Name="BtnFilterSold" Click="BtnFilterSold_Click"/>
+            <CheckBox x:Name="ChBSold" Grid.Row="2" HorizontalAlignment="Right" Margin="0 0 40 0" Checked="ChBSold_Checked" Unchecked="ChBSold_Unchecked" Content="          "/>
+
+            <!--Количество квартир-->
+            <TextBlock Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                       Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <Run x:Name="runCountOfObject" Text="{Binding CountOfObject}"/>
+                <Run x:Name="runNameOfObject" Text="Объекты"/>
+                
+            </TextBlock>
+            
+            <!--Кнопка фильтра-->
+            <Button x:Name="filterBtn" Grid.Row="4" Style="{StaticResource filterButton}" 
+                    Click="MenuBtn_Click" >
+                <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="10" Height="10"/>
+            </Button>
+            <Button x:Name="filterBtnClose" Grid.Row="4" Style="{StaticResource filterButton}" 
+                    Click="filterBtnClose_Click"  Visibility="Hidden">
+                <Icon:PackIconMaterial Kind="Filter" VerticalAlignment="Center" Width="10" Height="10"/>
+            </Button>
+
+            <!--Сепаратор-->
+            <Separator Height="1" Grid.Row="5" Background="#dae2ea" Margin="0 -1 0 10"/>
+            
+            <!--Вывод-->
+            <Grid Grid.Row="6">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="0*" x:Name="MunuClnm" ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                
+                <!--Карточки-->
+                <ListView x:Name="ListAparts" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Top" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListAparts_SelectionChanged">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel>
+
+                            </WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderThickness="1" BorderBrush="#dae2ea" CornerRadius="7" Background="#dae2ea">
+                                
+                                    <Button Width="250" Height="250" x:Name="BtnObjectInfo" Click="BtnObjectInfo_Click">
+                                    <StackPanel Orientation="Vertical">
+
+                                        <Image Grid.Row="1" HorizontalAlignment="Center" x:Name="ImgObj"
+                                               Width="240" Height="150" VerticalAlignment="Center" Source="{Binding ImagePreview, FallbackValue={StaticResource NullImage}}"></Image>
+                                        
+                                        <!--Заголовки карточек-->
+                                        <StackPanel Orientation="Horizontal">
+                                            <TextBlock Grid.Row="0" Text="{Binding PreviewName}" HorizontalAlignment="Left" Margin="0 5 0 0"
+                                                   FontSize="16" FontWeight="SemiBold" Foreground="#121518"></TextBlock>
+                                            <TextBlock Text="{Binding FullViewArea}" HorizontalAlignment="Left" Margin="5 5 0 0"
+                                                   FontSize="16" Foreground="#121518" FontWeight="SemiBold"></TextBlock>
+                                        </StackPanel>
+
+                                        <TextBlock Text="{Binding FullPrice}"  HorizontalAlignment="Left" Margin="0 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="SemiBold"></TextBlock>
+
+                                        <!--Описание карточек-->
+                                        <WrapPanel>
+                                            <TextBlock Text="{Binding City.Name}" HorizontalAlignment="Left" Margin="0 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="Normal"/>
+                                            <TextBlock Text="{Binding Districts.Name}" HorizontalAlignment="Left" Margin="5 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="Normal"/>
+                                            <TextBlock Text="{Binding Metro.Name}" HorizontalAlignment="Left" Margin="0 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="Normal"/>
+                                            <TextBlock Text="{Binding Street}" HorizontalAlignment="Left" Margin="5 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="Normal"/>
+                                            <TextBlock Text="{Binding House}" HorizontalAlignment="Left" Margin="5 0 0 0"
+                                                   FontSize="14" Foreground="#121518" FontWeight="Normal"/>
+                                        </WrapPanel>
+                                            
+                                        
+                                        
+                                        
+             
+                                        
+                                                
+                                           
+                                        </StackPanel>
+                                        
+                                    </Button>
+                                 
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!--Фильтр-->
+                <Border  Grid.Column="1" Background="#eff2f7">
+                    
+                    <ScrollViewer>
+                        <StackPanel Orientation="Horizontal">
+                            <Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="#dae2ea" />
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="Фильтр" FontSize="16" Style="{StaticResource filterPanel}"/>
+
+                                <TextBlock Text="Количество комнат" Style="{StaticResource filterPanel}"/>
+
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
+                                        <CheckBox x:Name="ChBNullRoom" Style="{StaticResource checkBox}" Content="Не важно" />
+                                        <CheckBox x:Name="ChB1" Style="{StaticResource checkBox}" >1 комната</CheckBox>
+                                        <CheckBox x:Name="ChB2" Style="{StaticResource checkBox}" Content="2 комнаты" />
+
+                                    </StackPanel>
+                                    <StackPanel Orientation="Vertical">
+                                        <CheckBox x:Name="ChB3" Style="{StaticResource checkBox}" Content="3 комнаты"/>
+                                        <CheckBox x:Name="ChB4" Style="{StaticResource checkBox}" Content="4 комнаты"/>
+                                        <CheckBox x:Name="ChB5" Style="{StaticResource checkBox}" Content="5 и более"/>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <TextBlock Text="Цена, руб" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Style="{StaticResource txtBoxPrice}" Text=""
+                                             x:Name="txtBoxMinPrice" />
+                                    <TextBox Style="{StaticResource txtBoxPrice}" Text="" Margin="0 10 0 0"
+                                             x:Name="txtBoxMaxPrice" />
+                                </StackPanel>
+
+                                <TextBlock Text="Площадь, кв.м." Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Style="{StaticResource txtBoxPrice}" 
+                                             x:Name="txtMinArea"/>
+                                    <TextBox Style="{StaticResource txtBoxPrice}" Margin="0 10 0 0"
+                                             x:Name="txtMaxArea"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Этаж" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Style="{StaticResource txtBoxPrice}" 
+                                             x:Name="txtMinFloor"/>
+                                    <TextBox Style="{StaticResource txtBoxPrice}" Margin="0 10 0 0"
+                                             x:Name="txtMaxFloor"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Ремонт" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                    Margin="20 10 0 0" Content="Неважно"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}"
+                                                  x:Name="tgbRepair" Margin="0 10 0 0" Content="С ремонтом"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}"
+                                                  x:Name="tgbNonRepair" Margin="0 10 0 0" Content="Без ремонта"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Высота потолков, м" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  Width="50" Margin="20 10 0 0" Content="Неважно"
+                                                  x:Name="tgbAll"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbfirst" Width="50" Margin="0 10 0 0" Content="2,4"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbsec" Width="50" Margin="0 10 0 0" Content="3"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbthird" Width="50" Margin="0 10 0 0" Content="3,5"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Санузел" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                   Margin="20 10 0 0" Content="Неважно"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbTogether" Margin="0 10 0 0" Content="Cовмещенный"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbApart" Margin="0 10 0 0" Content="Раздельный"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Этажей в доме" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox Style="{StaticResource txtBoxPrice}"
+                                             x:Name="txtMinCountFloor" />
+                                    <TextBox Style="{StaticResource txtBoxPrice}" 
+                                             x:Name="txtMaxCountFloor"  Margin="0 10 0 0"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Лифт" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  Margin="20 10 0 0" Content="Неважно"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbLiftY" Margin="0 10 0 0" Content="Есть"/>
+                                    <ToggleButton Style="{StaticResource filterToggleBtn}" 
+                                                  x:Name="tgbLiftN" Margin="0 10 0 0" Content="Нету"/>
+                                </StackPanel>
+
+                                <TextBlock Text="Тип парковки" Style="{StaticResource filterPanel}"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel Orientation="Vertical">
+                                        <CheckBox x:Name="ChBNullPark" Style="{StaticResource checkBox}" Content="Не важно"/>
+                                        <CheckBox x:Name="ChBpark1" Style="{StaticResource checkBox}">Открытая во дворе</CheckBox>
+                                        <CheckBox x:Name="ChB2park" Style="{StaticResource checkBox}" Content="Подземная"/>
+
+                                        <CheckBox x:Name="ChB3park" Style="{StaticResource checkBox}" Content="Наземная многоуровневая"/>
+                                        <CheckBox x:Name="ChB4park" Style="{StaticResource checkBox}" Content="За шлагбаумом во дворе"/>
+
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <Button x:Name="showFilter" Style="{StaticResource addButton}" HorizontalAlignment="Center" Width="200" Height="25"  
+                                        Click="showFilter_Click" Content="Показать результаты"/>
+
+                            </StackPanel>
+                        </StackPanel>
+                        
+                    </ScrollViewer>
+                    
+                    
+                </Border>
+            </Grid>
+            
+        </Grid>
+    </Border>
+        
+    
+</Page>

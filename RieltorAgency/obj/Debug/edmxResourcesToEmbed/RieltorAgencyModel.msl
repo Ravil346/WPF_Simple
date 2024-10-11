@@ -1,0 +1,171 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище RieltorDipModelContainer" CdmEntityContainer="RieltorDipEntities">
+    <EntitySetMapping Name="Apartament">
+      <EntityTypeMapping TypeName="RieltorDipModel.Apartament">
+        <MappingFragment StoreEntitySet="Apartament">
+          <ScalarProperty Name="Image1" ColumnName="Image" />
+          <ScalarProperty Name="Id_District" ColumnName="Id_District" />
+          <ScalarProperty Name="Id_Metro" ColumnName="Id_Metro" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="House" ColumnName="House" />
+          <ScalarProperty Name="Flat" ColumnName="Flat" />
+          <ScalarProperty Name="Area" ColumnName="Area" />
+          <ScalarProperty Name="Rooms" ColumnName="Rooms" />
+          <ScalarProperty Name="Floor" ColumnName="Floor" />
+          <ScalarProperty Name="Id_Type" ColumnName="Id_Type" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Repair" ColumnName="Repair" />
+          <ScalarProperty Name="Id_Type_Of_Rooms" ColumnName="Id_Type_Of_Rooms" />
+          <ScalarProperty Name="High_Of_Roof" ColumnName="High_Of_Roof" />
+          <ScalarProperty Name="Id_Type_Of_Toilet" ColumnName="Id_Type_Of_Toilet" />
+          <ScalarProperty Name="Floor_In_House" ColumnName="Floor_In_House" />
+          <ScalarProperty Name="Lift" ColumnName="Lift" />
+          <ScalarProperty Name="Id_Type_Of_Parking" ColumnName="Id_Type_Of_Parking" />
+          <ScalarProperty Name="Id_Client" ColumnName="Id_Client" />
+          <ScalarProperty Name="Id_Rieltor" ColumnName="Id_Rieltor" />
+          <ScalarProperty Name="Id_Type_Of_Operation" ColumnName="Id_Type_Of_Operation" />
+          <ScalarProperty Name="Sold" ColumnName="Sold" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="RieltorDipModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="RieltorDipModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Deal">
+      <EntityTypeMapping TypeName="RieltorDipModel.Deal">
+        <MappingFragment StoreEntitySet="Deal">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Demand" ColumnName="Id_Demand" />
+          <ScalarProperty Name="Id_Apartament" ColumnName="Id_Apartament" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Demands">
+      <EntityTypeMapping TypeName="RieltorDipModel.Demands">
+        <MappingFragment StoreEntitySet="Demands">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+          <ScalarProperty Name="MinPrise" ColumnName="MinPrise" />
+          <ScalarProperty Name="MaxPrise" ColumnName="MaxPrise" />
+          <ScalarProperty Name="Id_Rieltor" ColumnName="Id_Rieltor" />
+          <ScalarProperty Name="Id_Client" ColumnName="Id_Client" />
+          <ScalarProperty Name="Id_Type_Of_Operation" ColumnName="Id_Type_Of_Operation" />
+          <ScalarProperty Name="MinArea" ColumnName="MinArea" />
+          <ScalarProperty Name="MaxArea" ColumnName="MaxArea" />
+          <ScalarProperty Name="MinRooms" ColumnName="MinRooms" />
+          <ScalarProperty Name="MaxRooms" ColumnName="MaxRooms" />
+          <ScalarProperty Name="MinFloor" ColumnName="MinFloor" />
+          <ScalarProperty Name="MaxFloor" ColumnName="MaxFloor" />
+          <ScalarProperty Name="Id_Type_Of_House" ColumnName="Id_Type_Of_House" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Districts">
+      <EntityTypeMapping TypeName="RieltorDipModel.Districts">
+        <MappingFragment StoreEntitySet="Districts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Image">
+      <EntityTypeMapping TypeName="RieltorDipModel.Image">
+        <MappingFragment StoreEntitySet="Image">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Id_Apartament" ColumnName="Id_Apartament" />
+          <ScalarProperty Name="Image1" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Metro">
+      <EntityTypeMapping TypeName="RieltorDipModel.Metro">
+        <MappingFragment StoreEntitySet="Metro">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id_City" ColumnName="Id_City" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Of_House">
+      <EntityTypeMapping TypeName="RieltorDipModel.Type_Of_House">
+        <MappingFragment StoreEntitySet="Type_Of_House">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Of_Operation">
+      <EntityTypeMapping TypeName="RieltorDipModel.Type_Of_Operation">
+        <MappingFragment StoreEntitySet="Type_Of_Operation">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Of_Parking">
+      <EntityTypeMapping TypeName="RieltorDipModel.Type_Of_Parking">
+        <MappingFragment StoreEntitySet="Type_Of_Parking">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Of_Rooms">
+      <EntityTypeMapping TypeName="RieltorDipModel.Type_Of_Rooms">
+        <MappingFragment StoreEntitySet="Type_Of_Rooms">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Type_Of_Toilet">
+      <EntityTypeMapping TypeName="RieltorDipModel.Type_Of_Toilet">
+        <MappingFragment StoreEntitySet="Type_Of_Toilet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Worker">
+      <EntityTypeMapping TypeName="RieltorDipModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Secondname" ColumnName="Secondname" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Role" ColumnName="Role" />
+          <ScalarProperty Name="Passport" ColumnName="Passport" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Count_Of_Sale" ColumnName="Count_Of_Sale" />
+          <ScalarProperty Name="Sallary" ColumnName="Sallary" />
+          <ScalarProperty Name="Image" ColumnName="Image" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

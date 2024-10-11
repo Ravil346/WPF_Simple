@@ -1,0 +1,109 @@
+﻿<Page x:Class="RieltorAgency.ClientsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+      xmlns:local="clr-namespace:RieltorAgency"
+      mc:Ignorable="d" 
+       d:DesignHeight="720" d:DesignWidth="880"
+      Title="ClientsPage">
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </Page.Resources>
+
+    <Border CornerRadius="30" Background="#eff2f7" >
+        <Grid Margin="30 20 20 20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <!--Верхняя строка-->
+            <Border Height="50" Grid.Row="0"/>
+
+            <!--Название страницы-->
+            <TextBlock Text="Клиенты" Grid.Row="1" FontSize="32" FontWeight="SemiBold" Margin="0 20 0 0"
+                       HorizontalAlignment="Left" Foreground="#121518"/>
+
+            <!--Кнопка добавления-->
+            <!--<Button Style="{StaticResource addButton}">
+                <StackPanel Orientation="Horizontal">
+                    <Icon:PackIconMaterial Kind="Plus" VerticalAlignment="Center" Width="11" Height="11" Margin="0 1 8 0"/>
+                    
+                </StackPanel>
+            </Button>-->
+
+            <!--Сепаратор-->
+            <Separator Height="1" Grid.Row="3" Background="#dae2ea" Margin="0 -1 0 10"/>
+
+            <!--Кнопки объектов-->
+            <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <Button Content="Продавцы" Style="{StaticResource tabButton}"/>
+                <Button Content="Покупатели" Style="{StaticResource tabButton}"/>
+                
+
+            </StackPanel>
+            <Button Content="Активные" Grid.Row="2" Style="{StaticResource tabButton}" HorizontalAlignment="Right"/>
+
+            <!--Количество квартир-->
+            <TextBlock Grid.Row="4" FontSize="18" FontWeight="SemiBold"
+                       Foreground="#121518" HorizontalAlignment="Left" VerticalAlignment="Center">
+                <!--<Run x:Name="runCountOfObject" Text="N"/>-->
+                <Run x:Name="runNameOfObject" Text="Клиенты"/>
+
+            </TextBlock>
+            
+            <!--Поиск-->
+            <Grid Width="200" HorizontalAlignment="Right" Grid.Row="4">
+                <TextBlock Margin="15 0" VerticalAlignment="Center" Foreground="#b0b9c6" IsHitTestVisible="False"
+                           Panel.ZIndex="1" 
+                           Visibility="{Binding ElementName=txtFilter, Path=Text.IsEmpty,Converter={StaticResource BoolToVis}}"/>
+
+                <TextBox x:Name="txtSearch" Height="30" Style="{StaticResource textBoxSearch}"/>
+
+                <!--<Icon:PackIconMaterial Kind="Magnify" Width="15" Height="15" VerticalAlignment="Center" 
+                                       Margin="0 0 15 0" Foreground="#b6b9c6" HorizontalAlignment="Right"/>-->
+            </Grid>
+            
+            <!--Вывод-->
+
+            <DataGrid Grid.Row="5" x:Name="DataGridClients" AutoGenerateColumns="False" IsReadOnly="True" ColumnWidth="*">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Id}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Фамилия" Binding="{Binding Surname}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Имя" Binding="{Binding Name}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Отчетсво" Binding="{Binding SecondName}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Паспорт" Binding="{Binding Password}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Телефон" Binding="{Binding Phone}"></DataGridTextColumn>
+                    <DataGridTextColumn Header="Почта" Binding="{Binding Email}"></DataGridTextColumn>
+                    <DataGridTemplateColumn>
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Style="{StaticResource filterButton}" Background="Red"
+                                            Margin="0" x:Name="BtnApart" Click="BtnApart_Click"/>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                </DataGrid.Columns>
+            </DataGrid>
+
+
+
+
+
+            <!--Сепаратор-->
+            <!--<Separator Height="1" Grid.Row="5" Background="#dae2ea" Margin="0 -1 0 10"/>-->
+
+            <!--Вывод-->
+            
+
+        </Grid>
+    </Border>
+</Page>
